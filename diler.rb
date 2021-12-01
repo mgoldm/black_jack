@@ -1,13 +1,7 @@
 class Diller < Player
-  def initialize(name = 'Diler', bank = 100)
-    super
-    @name = name
-  end
-
-  #ход диллера
-  def action
-    if @score <= 17
-      give_card
+  def action(deck)
+    if @score < 17
+      add_card(deck)
     else
       puts 'Пропускаю ход'
     end
