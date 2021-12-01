@@ -47,7 +47,8 @@ TEXT
       puts "#{@player.bank}"
     when "3"
       abort "Завершение работы"
-
+    else
+      puts 'Такого варианта нет'
     end
   end
 
@@ -67,6 +68,8 @@ TEXT
       show
     when "3"
       show
+    else
+      puts 'Такого варианта нет'
     end
   end
 
