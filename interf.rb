@@ -40,7 +40,7 @@ TEXT
   end
 
   def bet
-    puts 'Сделана ставка 30 очков'
+    puts 'Сделана ставка 10 очков'
   end
 
   def no_option
