@@ -1,8 +1,12 @@
+require_relative 'card'
+require_relative 'deck'
 require_relative 'hand'
 require_relative 'player'
 require_relative 'real'
-require_relative 'diler'
-require_relative 'interface'
+require_relative 'dealler'
+require_relative 'interf'
+require_relative 'game'
 
-controller = Controller.new
+controller = Game.new
+
 controller.start

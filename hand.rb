@@ -1,24 +1,41 @@
-class Deck
+class Hand
+  attr_reader :cards, :score
   def initialize
-    @full_deck = []
-    create_deck
+    @cards = []
+    @score=0
   end
 
-  def create_deck
-    names = %w(2 3 4 5 6 7 8 9 10 J Q K A)
-    title = %w(♠ ♦ ♥ ♣)
-    names.each do |name|
-      @full_deck << "#{name} #{title[0]}"
-      @full_deck << "#{name} #{title[1]}"
-      @full_deck << "#{name} #{title[2]}"
-      @full_deck << "#{name} #{title[3]}"
+  def first_cards(deck)
+    2.times { @cards << deck.give_card }
+    @cards
+  end
+
+  def add_card(deck)
+    @cards << deck.give_card
+
+  end
+
+  def score
+    point = 0
+    @cards.each do |card|
+      name = card.split('')
+      value = name[0]
+      case value
+      when 'J'
+        point += 10
+      when 'Q'
+        point += 10
+      when 'K'
+        point += 10
+      when 'A'
+        point += 1 if point >= 11
+        point += 11 if point < 11
+      else
+        point += value.to_i
+      end
     end
+    @score=point
   end
 
-  def give_card
-    new_card = @full_deck[rand(0..@full_deck.length-1)]
-    @full_deck.delete(new_card)
-    new_card
-  end
 
 end
