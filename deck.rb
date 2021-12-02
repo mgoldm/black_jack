@@ -9,8 +9,8 @@ class Deck
     titles = %w(♠ ♦ ♥ ♣)
     names.each do |name|
       titles.each do |title|
-        cards=Card.new(name, title)
-        @full_deck << cards.together
+        cards = Card.new(name, title)
+        @full_deck << cards
       end
     end
   end

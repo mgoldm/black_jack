@@ -1,7 +1,7 @@
 class Diller < Player
 
   def action(deck)
-    if @current_cards.score < 17
+    if @hand.score < 17
       add_card(deck)
     else
       puts 'Пропускаю ход'

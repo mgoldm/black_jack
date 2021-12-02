@@ -15,7 +15,7 @@ class Game
 
   def run_1
     @interf.menu
-    action = gets.chomp
+    action = @interf.action
     case action
     when "1"
       create_cards
@@ -34,7 +34,7 @@ class Game
 
   def run_2
     @interf.menu_2
-    action = gets.chomp
+    action = @interf.action
     case action
     when "1"
       give_one_card
@@ -76,13 +76,13 @@ class Game
   def next_step
     @interf.show_player_cards_score
     @interf.show_diller_cards_score
-    if @player.current_cards.score < @diller.current_cards.score and @diller.current_cards.score <= 21
+    if @player.hand.score < @diller.hand.score and @diller.hand.score <= 21
       lose
-    elsif @player.current_cards.score > @diller.current_cards.score and @player.current_cards.score <= 21
+    elsif @player.hand.score > @diller.hand.score and @player.hand.score <= 21
       win
-    elsif @player.current_cards.score > 21
+    elsif @player.hand.score > 21
       lose
-    elsif @diller.current_cards.score > 21
+    elsif @diller.hand.score > 21
       win
     end
   end
@@ -92,7 +92,7 @@ class Game
   end
 
   def win
-    @interf.wiiner
+    @interf.winer
     @player.bank += @banks
     @banks = 0
   end

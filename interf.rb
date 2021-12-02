@@ -6,10 +6,12 @@ require_relative 'dealler'
 require_relative 'real'
 
 class Interface
+  attr_reader :action
 
   def initialize(player, diller)
     @player = player
     @diller = diller
+    @action = ''
   end
 
   def start_of_game
@@ -26,6 +28,7 @@ class Interface
     - Выйти из игры 3
 TEXT
     puts list
+    @action = gets.chomp
   end
 
   def menu_2
@@ -48,16 +51,25 @@ TEXT
   end
 
   def show_player_cards_score
-    print "Ваши карты #{@player.current_cards.cards}\n", "Ваш счет #{@player.current_cards.score}\n"
+    print "Ваши карты:\n"
+    @player.hand.cards.each do |card|
+      print card.together
+    end
+    puts "\n Ваш счет #{@player.hand.score}\n"
   end
 
   def show_diller_cards_score
-    puts "Карты диллера #{@diller.current_cards.cards}\n", "Очки диллера #{@diller.current_cards.score}\n"
+    print "Карты диллера:\n"
+    @diller.hand.cards.each do |card|
+      print card.together
+    end
+    puts "\n Счет диллера #{@diller.hand.score}\n"
   end
 
   def winner
     puts 'Поздравляем, вы выйграли, на ваш счет начислены очки'
   end
+
   def looser
     puts 'К сожалению, вы проиграли, ваши очки будут списаны'
   end

@@ -1,16 +1,15 @@
 class Player
 
-  attr_reader :current_cards, :point
+  attr_reader :hand, :point
   attr_accessor :bank
 
-  def initialize( bank = 100)
+  def initialize(bank = 100)
     @bank = bank
-    @current_cards = Hand.new
+    @hand = Hand.new
   end
 
-
   def add_card(deck)
-    @current_cards.add_card(deck)
+    @hand.add_card(deck)
   end
 
 end
