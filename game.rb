@@ -51,14 +51,14 @@ class Game
 
   def create_cards
     @deck = Deck.new
-    2.times { @player.add_card(@deck) }
-    2.times { @diller.add_card(@deck) }
+    2.times { @player.hand.add_card(@deck) }
+    2.times { @diller.hand.add_card(@deck) }
     @interf.show_player_cards_score
     money_in_bank
   end
 
   def give_one_card
-    @player.add_card(@deck)
+    @player.hand.add_card(@deck)
     diller_turn
     next_step
   end
@@ -92,7 +92,7 @@ class Game
   end
 
   def win
-    @interf.winer
+    @interf.winner
     @player.bank += @banks
     @banks = 0
   end

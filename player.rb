@@ -8,10 +8,6 @@ class Player
     @hand = Hand.new
   end
 
-  def add_card(deck)
-    @hand.add_card(deck)
-  end
-
 end
 
 

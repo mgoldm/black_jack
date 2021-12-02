@@ -1,5 +1,5 @@
 class Hand
-  attr_reader :cards, :score
+  attr_reader :cards
 
   def initialize
     @cards = []
@@ -8,20 +8,20 @@ class Hand
   def first_cards(deck)
     2.times { @cards << deck.give_card }
     @cards
-    your_score
+    score
   end
 
   def add_card(deck)
     @cards << deck.give_card
-    your_score
+    score
 
   end
 
-  def your_score
+  def score
     poins=0
     @cards.each do |card|
-      value = card.name
-      case value
+
+      case card.name
       when 'J'
         poins += 10
       when 'Q'
@@ -32,10 +32,10 @@ class Hand
         poins += 1 if poins >= 11
         poins += 11 if poins < 11
       else
-        poins += value.to_i
+        poins += card.name.to_i
       end
     end
-    @score=poins
+    poins
   end
 
 end
